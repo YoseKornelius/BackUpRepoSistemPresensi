@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Daftar Presensi Per Jadwal</title>
+</head>
+<body onload="connectTime()">
+<h2>
+    Daftar Presensi <span id="kodejadwal" th:text="${kodejadwal}"></span>
+</h2>
+
+<!--<h2 >Daftar Presensi Per Jadwal</h2>-->
+<div th:if="${ not#lists.isEmpty(daftarpresensi)}">
+    <button onclick="startpresensi(document.getElementById('kodejadwal').textContent)"
+            id="updateqrcodeBtn">run
+    </button>
+    <div class="mt-5" id="qr_code">
+        qr code placement
+    </div>
+    <table style="width:100%">
+        <thead>
+        <tr>
+            <th>NIM</th>
+            <th>Nama</th>
+            <th>Hadir</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="presensi : ${daftarpresensi}">
+            <td th:text="${presensi.mahasiswa.nim}"></td>
+            <td th:text="${presensi.mahasiswa.nama}"></td>
+            <td th:text="${presensi.hadir}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function startpresensi(kodejadwal) {
+        console.log("kodejadwal " + kodejadwal);
+        $.post("/generatepresensiqr",
+            {
+                kodeJadwal: kodejadwal
+            }
+        ).done(function (fragment) {
+            console.log("this is data : " + fragment);
+            $("#qr_code").replaceWith(fragment);
+        });
+    }
+
+    function connectTime() {
+        console.log('connect timer SSE');
+        var eventSource = new EventSource('/ssepresensi');
+
+        // Handle correct opening of connection
+        eventSource.onopen = function () {
+            console.log('connection is established');
+        };
+
+        // Update the QRData when ever a message is sent
+        eventSource.onmessage = function (event) {
+            var qrData = JSON.parse(event.data);
+            console.log("QRData: " + qrData.timeRemain);
+            var timeremain = document.getElementById("timeremain");
+            var qrCode = document.getElementById("qrcode");
+            var qrvalue = document.getElementById("qrvalue");
+            var timestart = document.getElementById("timestart");
+            var timeend = document.getElementById("timeend");
+
+            qrCode.src = "data:image/png;base64," + qrData.qrCode;
+            qrvalue.textContent = qrData.qrValue;
+            timeremain.textContent = qrData.timeRemain;
+            timestart.textContent = qrData.timeStart;
+            timeend.textContent = qrData.timeEnd;
+
+            if (qrData.timeRemain === "00:00") {
+                location.reload(true);
+            }
+        };
+
+        // Reconnect if the connection fails
+        eventSource.onerror = function (event) {
+            console.log('connection state: ' + eventSource.readyState + ', error: ' + event);
+            connectTime();
+        };
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Daftar Kelas</h2>
+<div th:if="${ not#lists.isEmpty(kelases)}">
+    <table style="width:100%">
+        <thead>
+        <tr>
+            <th>Kode Kelas</th>
+            <th>Mata Kuliah</th>
+            <th>Dosen</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="kelas : ${kelases}">
+            <td th:text="${kelas.kodeKelas}"></td>
+            <td th:text="${kelas.matakuliah.namaMatakuliah}"></td>
+            <td th:text="${kelas.dosen.nama}"></td>
+            <td><a th:href="@{/daftarjadwal(kodekelas=${kelas.kodeKelas})}">Pilih</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

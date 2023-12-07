@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--https://stackoverflow.com/questions/70202040/update-content-in-thymeleaf-without-reloading-whole-page-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Test Ajax Fragment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h3>A Permanent Heading</h3>
+<div id="output">
+    Some initial text displayed here. This will be replaced.
+</div>
+<br>
+<button onclick="updateOutput()"
+        id="ausfuehrenBtn">run
+</button>
+
+
+<script>
+    function updateOutput() {
+        $.post("test_ajax_frag").done(function (fragment) {
+            console.log(fragment);
+            $("#output").replaceWith(fragment);
+        });
+    }
+</script>
+</body>
+</html>

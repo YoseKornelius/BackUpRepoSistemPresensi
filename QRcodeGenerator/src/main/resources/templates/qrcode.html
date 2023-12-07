@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body >
+
+<div  id="qr_code" th:fragment="qr_code">
+    <!--<th:block th:unless="${#strings.isEmpty(text)}">-->
+        <h3>
+            Text: <span id="qrvalue" th:text="${qrvalue}"></span>
+        </h3>
+        <img id="qrcode" th:src="${'data:image/png;base64,' + qrcode}"
+             alt="GeneratedQRCode" class="img-fluid rounded" >
+        <h3>
+            Time Start: <span id="timestart" th:text="${timestart}"></span>
+        </h3>
+        <h3>
+            Time End: <span id="timeend" th:text="${timeend}"></span>
+        </h3>
+        <h3>
+            Time remaining: <span id="timeremain"></span>
+        </h3>
+    <!--</th:block>-->
+</div>
+<script>
+    /*document.getElementById('qrCodeDownload').addEventListener('click',
+        function () {
+            var imageElement = document.querySelector('#qrCodeImage');
+            var imageUrl = imageElement.src;
+
+            fetch(imageUrl).then(response => response.blob()).then(blob => {
+                var link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'QRCode.jpg';
+                document.body.appendChild(link);
+                link.click();
+            });
+        });*/
+</script>
+</body>
+</html>

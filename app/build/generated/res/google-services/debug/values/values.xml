@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">783731701338-eoct637k5mittn5me50fldqifgq3rora.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://faceauthenticationlog-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+    <string name="gcm_defaultSenderId" translatable="false">783731701338</string>
+    <string name="google_api_key" translatable="false">AIzaSyAhxQLHF-kADXd-aYGX3xHWrsmj9J1PkZ4</string>
+    <string name="google_app_id" translatable="false">1:783731701338:android:d07b8aaa052a40d9474a63</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAhxQLHF-kADXd-aYGX3xHWrsmj9J1PkZ4</string>
+    <string name="google_storage_bucket" translatable="false">faceauthenticationlog.appspot.com</string>
+    <string name="project_id" translatable="false">faceauthenticationlog</string>
+</resources>

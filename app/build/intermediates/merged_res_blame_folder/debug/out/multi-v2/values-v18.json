@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.androidfaceauthentication.app-mergeDebugResources-35:/values-v18/values-v18.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\YOSE\\.gradle\\caches\\transforms-3\\8543262492218739e1e06a7f54d857bf\\transformed\\appcompat-1.3.1\\res\\values-v18\\values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
+        }
+    ]
+}

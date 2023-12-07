@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.androidfaceauthentication.app-mergeDebugResources-35:/values-ldrtl-v17/values-ldrtl-v17.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\YOSE\\.gradle\\caches\\transforms-3\\4b04b98e8c1a900b2cc04d042613b0d4\\transformed\\material-1.4.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,191",
+                        "endColumns": "135,140",
+                        "endOffsets": "186,327"
+                    }
+                }
+            ]
+        }
+    ]
+}
